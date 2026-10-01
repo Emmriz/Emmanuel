@@ -25,9 +25,9 @@ const SITE = {
 
   // Leave any of these empty ("") to hide it everywhere.
   socials: {
-    github: "https://github.com/emmriz",
-    linkedin: "https://www.linkedin.com/in/your-username/",
-    twitter: "https://x.com/your-username",
+    github: "https://github.com/Emmriz",
+    linkedin: "https://www.linkedin.com/in/emmanuel-ajolore-44b41a128/",
+    twitter: "https://x.com/emmanuelajolore",
     youtube: "",
   },
 
