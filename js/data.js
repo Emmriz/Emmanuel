@@ -5,12 +5,12 @@
  */
 
 const SITE = {
-  logo: "EMMANUEL AJOLORE",                    // top-left wordmark (an accent dot is added)
-  firstName: "EMMANUEL",                    // hero line 1
-  lastName: "AJOLORE",                     // hero line 2 (grey)
-  role: "Full-Stack Software Engineer",
+  logo: "EMMANUEL",                    // top-left wordmark (an accent dot is added)
+  firstName: "Emmanuel",                    // hero line 1
+  lastName: "Ajolore",                     // hero line 2 (grey)
+  role: "Web Developer | Tech Support",
   tagline:
-    "I design and build complete digital products — from polished user interfaces to reliable backends and the infrastructure behind them. Replace this with two or three sentences about what you do and who you help.",
+    "I design and build complete digital products. From polished user interfaces to reliable backends and the infrastructure behind them. Proficient in building responsive web products and providing technical assistance to users, adept at collaborating with cross-functional teams to deliver high quality solutions.",
   city: "Lagos, Nigeria",
   status: "Available for work",
   timezone: "WAT (UTC +1)",
@@ -54,9 +54,9 @@ const IMPACT = {
   intro: "Real software for real businesses — these are the highlights.",
   items: [
     { value: 10, suffix: "+", label: "Production Projects", text: "Shipped across SaaS, e-commerce, mobile and business websites" },
-    { value: 3, suffix: "+", label: "Years Building", text: "Consistently delivering quality software across multiple stacks" },
-    { value: 4, suffix: "+", label: "Industries Served", text: "Replace with the industries you have worked in" },
-    { value: 5, suffix: "+", label: "Clients Served", text: "Replace with where your clients are based" },
+    { value: 5, suffix: "+", label: "Years Building", text: "Consistently delivering quality software across multiple stacks" },
+    { value: 4, suffix: "+", label: "Industries Served", text: "Banking, Healthcare, E-commerce, and Technology" },
+    { value: 20, suffix: "+", label: "Clients Served", text: "Nigeria, UK, Canada, South Africa, and the US" },
   ],
 };
 
@@ -185,16 +185,16 @@ const CONTACT = {
  */
 const PROJECTS = [
   {
-    slug: "project-one",
-    title: "Project One",
-    category: "SaaS",
+    slug: "BASEUS NIGERIA",
+    title: "BASEUS NIGERIA",
+    category: "E-commerce",
     year: 2026,
-    status: "In Development",
+    status: "Completed",
     featured: true,
-    description: "Replace this with one or two sentences on what the product does and who it is for.",
-    tech: ["React", "TypeScript", "Node.js", "PostgreSQL", "Stripe", "Docker"],
-    images: [],
-    live: "https://example.com",
+    description: "Baseus Nigeria is an online store for mobile and computer accessories, including power banks, chargers, cables, audio devices, car accessories, and USB-C hubs. The site is tailored to Nigerian shoppers, with prices in naira and product descriptions focused on features, compatibility, and everyday use.",
+    tech: ["WordPress", "PHP", "Tailwind", "MYSQL"],
+    images: [images/baseus1.png],
+    live: "https://baseus.com.ng",
     video: "https://example.com",
     problem: "Describe the problem the client or users had before this product existed.\n\nYou can use several paragraphs — line breaks are kept.",
     solution: "Describe what you built and the key decisions you made along the way.",
