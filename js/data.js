@@ -185,7 +185,7 @@ const CONTACT = {
  */
 const PROJECTS = [
   {
-    slug: "BASEUS NIGERIA",
+    slug: "baseus-nigeria",
     title: "BASEUS NIGERIA",
     category: "E-commerce",
     year: 2026,
@@ -193,7 +193,7 @@ const PROJECTS = [
     featured: true,
     description: "Baseus Nigeria is an online store for mobile and computer accessories, including power banks, chargers, cables, audio devices, car accessories, and USB-C hubs. The site is tailored to Nigerian shoppers, with prices in naira and product descriptions focused on features, compatibility, and everyday use.",
     tech: ["WordPress", "PHP", "Tailwind", "MYSQL"],
-    images: [images/baseus1.png],
+    images: ["images/baseus1.png", "images/baseus2.png", "images/baseus3.png"],
     live: "https://baseus.com.ng",
     video: "https://example.com",
     problem: "Describe the problem the client or users had before this product existed.\n\nYou can use several paragraphs — line breaks are kept.",
