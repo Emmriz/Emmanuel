@@ -2,6 +2,15 @@
 const App = (function () {
   "use strict";
 
+  // A mistake in js/data.js stops it loading, which would otherwise leave every page blank.
+  if (typeof SITE === "undefined" || typeof PROJECTS === "undefined") {
+    document.getElementById("main").innerHTML =
+      '<div style="max-width:40rem;margin:0 auto;padding:8rem 1.5rem;font-family:system-ui,sans-serif;color:#fafafa">' +
+      '<h1 style="font-size:1.5rem;font-weight:700;margin-bottom:1rem">The site content could not be loaded</h1>' +
+      '<p style="color:#a1a1aa;line-height:1.6">There is a mistake in <code>js/data.js</code>. Check that every piece of text and every image path is inside quotes, e.g. <code>images: ["images/photo.png"]</code>. Press F12 and open the Console tab to see the exact line.</p></div>';
+    throw new Error("js/data.js failed to load — see the first error above for the line number.");
+  }
+
   const $ = (sel, root = document) => root.querySelector(sel);
   const $$ = (sel, root = document) => [...root.querySelectorAll(sel)];
 
