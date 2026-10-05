@@ -8,7 +8,7 @@
 
 @layer base {
   html { scroll-behavior: smooth; }
-  ::selection { background: rgb(99 102 241 / 0.35); }
+  ::selection { background: rgb(var(--color-accent) / 0.35); }
   input[type="search"]::-webkit-search-cancel-button { filter: invert(0.6); cursor: pointer; }
 }
 

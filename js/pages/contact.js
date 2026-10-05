@@ -17,7 +17,7 @@
     <div class="flex flex-col gap-10">
       <div class="reveal bg-surface border border-border rounded-xl p-6">
         <div class="flex items-center gap-3 mb-4">
-          <span class="flex h-2.5 w-2.5 rounded-full bg-green-500 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span></span>
+          <span class="flex h-2.5 w-2.5 rounded-full bg-success relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success-light opacity-75"></span></span>
           <h3 class="font-semibold text-foreground text-sm">Currently Available</h3>
         </div>
         <p class="text-secondary text-sm leading-relaxed">${esc(CONTACT.availability)}</p>
@@ -38,8 +38,8 @@
           ${CONTACT.hours
             .map(
               (h) => `
-            <div class="flex items-center justify-between gap-3 text-xs p-3 rounded-lg ${h.open ? "bg-green-500/5 border border-green-500/15" : "bg-elevated border border-border"}">
-              <span class="text-foreground font-medium">${esc(h.day)}</span><span class="${h.open ? "text-green-400" : "text-muted"} text-right">${esc(h.time)}</span>
+            <div class="flex items-center justify-between gap-3 text-xs p-3 rounded-lg ${h.open ? "bg-success/5 border border-success/15" : "bg-elevated border border-border"}">
+              <span class="text-foreground font-medium">${esc(h.day)}</span><span class="${h.open ? "text-success-light" : "text-muted"} text-right">${esc(h.time)}</span>
             </div>`
             )
             .join("")}
@@ -88,7 +88,7 @@
           </form>
         </div>
         <div id="form-done" class="hidden text-center py-10" tabindex="-1">
-          <div class="w-12 h-12 rounded-2xl bg-green-500/10 border border-green-500/20 flex items-center justify-center mx-auto mb-6">${icon("check", 22, "text-green-400")}</div>
+          <div class="w-12 h-12 rounded-2xl bg-success/10 border border-success/20 flex items-center justify-center mx-auto mb-6">${icon("check", 22, "text-success-light")}</div>
           <h2 class="font-bold text-foreground text-xl mb-2">Message sent</h2>
           <p id="form-done-text" class="text-secondary text-sm mb-8"></p>
           <button id="form-again" class="text-sm font-semibold text-accent hover:text-accent-light transition-colors">Send another message</button>

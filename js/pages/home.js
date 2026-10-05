@@ -13,7 +13,7 @@
         <div class="grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
           <div class="max-w-3xl">
             <div class="reveal flex items-center gap-2 mb-8">
-              <span class="flex h-2 w-2 rounded-full bg-green-500 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span></span>
+              <span class="flex h-2 w-2 rounded-full bg-success relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-success-light opacity-75"></span></span>
               <span class="text-xs text-secondary font-medium tracking-wide flex items-center gap-1">${icon("mapPin", 11)}${esc(SITE.city)} · ${esc(SITE.status)}</span>
             </div>
             <h1 class="reveal text-[clamp(2.8rem,7vw,6rem)] font-bold tracking-tight leading-[1.02] text-foreground mb-4" ${delay(1)}>${esc(SITE.firstName)}<br><span class="text-secondary">${esc(SITE.lastName)}</span></h1>
@@ -134,15 +134,18 @@
                 <div class="flex-1 min-w-0">
                   <h3 class="text-xl sm:text-[1.75rem] font-bold tracking-tight leading-none mb-3 text-foreground group-hover:text-accent-light transition-colors duration-300">${esc(p.title)}</h3>
                   <p class="text-sm text-secondary leading-relaxed max-w-lg mb-4">${esc(p.description)}</p>
+                  <div class="sm:hidden relative w-full aspect-video rounded-xl overflow-hidden border border-border/40 bg-elevated mb-4">
+                    ${App.coverOf(p, { cls: "object-cover object-top", labelCls: "text-5xl" })}
+                  </div>
                   <div class="flex items-center gap-2 flex-wrap">
                     <span class="tag">${esc(p.category)}</span><span class="text-muted/30 select-none px-0.5">·</span>
                     ${(p.tech || []).slice(0, 3).map((t) => `<span class="text-xs font-mono text-muted">${esc(t)}</span>`).join("")}
                     ${(p.tech || []).length > 3 ? `<span class="text-xs font-mono text-muted/50">+${p.tech.length - 3}</span>` : ""}
                   </div>
                 </div>
-                <div class="shrink-0 self-start flex flex-col items-end gap-2.5 pt-0.5">
-                  <div class="hidden sm:flex w-9 h-9 rounded-full border border-border group-hover:border-accent/40 group-hover:bg-accent/10 items-center justify-center transition-all duration-300">${icon("arrow", 14)}</div>
-                  <div class="relative w-20 h-[3.25rem] sm:w-32 sm:h-20 rounded-lg sm:rounded-xl overflow-hidden border border-border/30 bg-elevated">
+                <div class="hidden sm:flex shrink-0 self-start flex-col items-end gap-2.5 pt-0.5">
+                  <div class="flex w-9 h-9 rounded-full border border-border group-hover:border-accent/40 group-hover:bg-accent/10 items-center justify-center transition-all duration-300">${icon("arrow", 14)}</div>
+                  <div class="relative w-32 h-20 rounded-xl overflow-hidden border border-border/30 bg-elevated">
                     ${App.coverOf(p, { cls: "object-cover object-top scale-[1.06] group-hover:scale-100 transition-transform duration-500 ease-out", labelCls: "text-xl" })}
                     <div class="absolute inset-0 bg-bg/30 group-hover:bg-transparent transition-colors duration-300"></div>
                   </div>
@@ -249,6 +252,8 @@
     container.appendChild(canvas);
 
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // Rays take the light accent colour from css/theme.css.
+    const rayColor = getComputedStyle(document.documentElement).getPropertyValue("--color-accent-light").trim() || "129 140 248";
     const rays = Array.from({ length: 16 }, (_, i) => ({
       angle: (i / 15 - 0.5) * 1.5 + (Math.random() - 0.5) * 0.08,
       width: 0.03 + Math.random() * 0.06,
@@ -284,8 +289,8 @@
         const a = Math.PI / 2 + ray.angle + Math.sin(t * ray.speed * 0.6 + ray.phase) * 0.04 - (eased - 0.5) * 0.25;
         const half = ray.width * (0.8 + 0.2 * pulse);
         const gradient = ctx.createLinearGradient(ox, oy, ox + Math.cos(a) * length, oy + Math.sin(a) * length);
-        gradient.addColorStop(0, `rgba(170, 175, 255, ${ray.alpha * pulse})`);
-        gradient.addColorStop(1, "rgba(99, 102, 241, 0)");
+        gradient.addColorStop(0, `rgb(${rayColor} / ${ray.alpha * pulse})`);
+        gradient.addColorStop(1, `rgb(${rayColor} / 0)`);
         ctx.fillStyle = gradient;
         ctx.beginPath();
         ctx.moveTo(ox, oy);

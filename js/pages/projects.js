@@ -59,21 +59,26 @@
   const card = (p, i) => {
     const tech = p.tech || [];
     const extra = tech.length > MAX_TECH ? [`+${tech.length - MAX_TECH}`] : [];
+    // The cover image (with its Featured badge) is rendered twice: on top for wider screens, inline for phones.
+    const media = (cls) => `
+      <div class="relative overflow-hidden bg-elevated ${cls}">
+        ${App.coverOf(p, { cls: "object-cover transition-transform duration-500 group-hover:scale-105" })}
+        ${p.featured ? '<div class="absolute top-3 left-3"><span class="text-xs font-semibold px-2.5 py-1 bg-accent text-white rounded-full">Featured</span></div>' : ""}
+      </div>`;
     return `
       <article class="reveal group relative bg-surface border border-border rounded-xl overflow-hidden hover:border-zinc-600 transition-colors duration-200 flex flex-col" ${delay(i, 50)}>
         <a class="absolute inset-0 z-0" aria-label="View ${esc(p.title)} details" href="${App.projectUrl(p)}"></a>
-        <div class="relative h-48 overflow-hidden bg-elevated flex-shrink-0">
-          ${App.coverOf(p, { cls: "object-cover transition-transform duration-500 group-hover:scale-105" })}
-          ${p.featured ? '<div class="absolute top-3 left-3"><span class="text-xs font-semibold px-2.5 py-1 bg-accent text-white rounded-full">Featured</span></div>' : ""}
-        </div>
+        ${media("hidden sm:block h-48 flex-shrink-0")}
+        <!-- Phones: title → description → image → category → tech stack. Wider screens keep the image on top. -->
         <div class="p-6 flex flex-col flex-1">
-          <div class="flex items-start justify-between gap-2 mb-2"><span class="tag">${esc(p.category)}</span><span class="text-xs font-mono text-muted">${esc(p.year)}</span></div>
-          <h3 class="font-bold text-foreground mb-2 group-hover:text-accent transition-colors">${esc(p.title)}</h3>
-          <p class="text-sm text-secondary leading-relaxed mb-4 flex-1">${esc(p.description)}</p>
-          <div class="flex flex-wrap gap-1.5 mb-5">
+          <h3 class="order-1 sm:order-none font-bold text-foreground mb-2 group-hover:text-accent transition-colors">${esc(p.title)}</h3>
+          <p class="order-2 sm:order-none text-sm text-secondary leading-relaxed mb-4 sm:flex-1">${esc(p.description)}</p>
+          ${media("order-3 sm:hidden aspect-video rounded-lg border border-border/40 mb-4")}
+          <div class="order-4 sm:order-first flex items-start justify-between gap-2 mb-3 sm:mb-2"><span class="tag">${esc(p.category)}</span><span class="text-xs font-mono text-muted">${esc(p.year)}</span></div>
+          <div class="order-5 sm:order-none flex flex-wrap gap-1.5 mb-5">
             ${[...tech.slice(0, MAX_TECH), ...extra].map((t) => `<span class="text-[11px] px-2 py-0.5 rounded-md bg-elevated border border-border text-muted">${esc(t)}</span>`).join("")}
           </div>
-          <div class="relative z-10 flex items-center gap-4 pt-4 border-t border-border">
+          <div class="order-6 sm:order-none mt-auto relative z-10 flex items-center gap-4 pt-4 border-t border-border">
             ${p.live ? `<a href="${esc(p.live)}" target="_blank" rel="noopener noreferrer" class="${ACTION} text-secondary hover:text-accent">${icon("external", 12)}Live Site</a>` : ""}
             ${p.video ? `<a href="${esc(p.video)}" target="_blank" rel="noopener noreferrer" class="${ACTION} text-secondary hover:text-red-400">${icon("youtube", 12)}Watch</a>` : ""}
             <a href="${App.projectUrl(p)}" class="${ACTION} text-muted hover:text-foreground ml-auto">Details${icon("arrow", 12)}</a>

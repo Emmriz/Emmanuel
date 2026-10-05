@@ -34,7 +34,7 @@
         <div class="flex flex-wrap items-center gap-3 mb-6">
           <span class="tag">${esc(project.category)}</span>
           ${project.year ? `<span class="flex items-center gap-1.5 text-xs text-muted font-mono">${icon("calendar", 11)}${esc(project.year)}</span>` : ""}
-          ${project.status ? `<span class="flex items-center gap-1.5 text-xs text-green-400 font-medium"><span class="w-1.5 h-1.5 rounded-full bg-green-500"></span>${esc(project.status)}</span>` : ""}
+          ${project.status ? `<span class="flex items-center gap-1.5 text-xs text-success-light font-medium"><span class="w-1.5 h-1.5 rounded-full bg-success"></span>${esc(project.status)}</span>` : ""}
         </div>
         <h1 class="text-display-md font-bold text-foreground mb-4">${esc(project.title)}</h1>
         <p class="text-lg text-secondary leading-relaxed max-w-3xl mb-8">${esc(project.description)}</p>
