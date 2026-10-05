@@ -164,7 +164,7 @@ const App = (function () {
   /* ---------- Footer ---------- */
   function renderFooter() {
     const socialLinks = socials()
-      .map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" aria-label="${s.label}" class="text-muted hover:text-foreground transition-colors duration-200">${icon(s.key, 18)}</a>`)
+      .map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer" aria-label="${s.label}" class="text-secondary hover:text-accent transition-colors duration-200">${icon(s.key, 20)}</a>`)
       .join("");
 
     document.body.insertAdjacentHTML(
@@ -183,11 +183,11 @@ const App = (function () {
         <div class="border-t border-border">
           <div class="container-main py-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
             <div class="flex flex-col gap-1">
-              <span class="text-sm text-secondary"><a href="mailto:${esc(SITE.email)}" class="hover:text-accent transition-colors">${esc(SITE.email)}</a></span>
-              <span class="text-xs text-muted">${esc(SITE.city)} · ${esc(SITE.timezone)}</span>
+              <span class="text-sm font-medium text-foreground"><a href="mailto:${esc(SITE.email)}" class="hover:text-accent transition-colors">${esc(SITE.email)}</a></span>
+              <span class="text-sm text-secondary">${esc(SITE.city)} · ${esc(SITE.timezone)}</span>
             </div>
             <div class="flex items-center gap-5">${socialLinks}</div>
-            <p class="text-xs text-muted order-last sm:order-none">© ${new Date().getFullYear()} ${esc(fullName)}</p>
+            <p class="text-sm text-secondary order-last sm:order-none">© ${new Date().getFullYear()} ${esc(fullName)}</p>
           </div>
         </div>
       </footer>`
@@ -259,7 +259,7 @@ const App = (function () {
             <h3 class="font-semibold text-foreground">${esc(job.title)}</h3>
             <p class="text-accent text-sm font-medium">${esc(job.company)}<span class="text-muted ml-2">· ${esc(job.type)}</span></p>
           </div>
-          <span class="text-xs font-mono text-muted bg-elevated border border-border px-2.5 py-1 rounded-lg flex items-center gap-1">${icon("calendar", 11)}${esc(job.period)}</span>
+          <span class="text-xs font-mono font-medium text-secondary bg-elevated border border-border px-2.5 py-1 rounded-lg flex items-center gap-1.5">${icon("calendar", 11, "text-accent")}${esc(job.period)}</span>
         </div>
         <p class="text-secondary text-sm leading-relaxed mb-4">${esc(job.summary)}</p>
         <ul class="flex flex-col gap-2">

@@ -45,7 +45,7 @@ const SITE = {
   // The three numbers under the hero buttons.
   heroStats: [
     { value: "10+", label: "Projects Shipped" },
-    { value: "5+", label: "Years Building" },
+    { value: "6+", label: "Years Building" },
     { value: "20+", label: "Happy Clients" },
   ],
 
@@ -58,7 +58,7 @@ const IMPACT = {
   intro: "Real software for real businesses — these are the highlights.",
   items: [
     { value: 10, suffix: "+", label: "Production Projects", text: "Shipped across SaaS, e-commerce, mobile and business websites" },
-    { value: 5, suffix: "+", label: "Years Building", text: "Consistently delivering quality software across multiple stacks" },
+    { value: 6, suffix: "+", label: "Years Building", text: "Consistently delivering quality software across multiple stacks" },
     { value: 4, suffix: "+", label: "Industries Served", text: "Banking, Healthcare, E-commerce, and Technology" },
     { value: 20, suffix: "+", label: "Clients Served", text: "Nigeria, UK, Canada, South Africa, and the US" },
   ],
@@ -112,7 +112,7 @@ const EXPERIENCE = {
       title: "Digital Product Support Executive",
       company: "FirstBank Of Nigeria",
       type: "Contract",
-      period: "2017 - 2019",
+      period: "2017 — 2019",
       summary: "Customer Support | Technical Support | Digital Banking | E-Business",
       points: ["First-level User Support officer for USSD, First Mobile, and Agency Banking Platform",
          "Participated in team meetings and contributed ideas for improving product design and functionality.",
@@ -126,7 +126,7 @@ const EXPERIENCE = {
       title: "Web Developer & Technical Support (Intern)",
       company: "TECHBEAST (Formerly HYDRON DATA SYSTEMS)",
       type: "Internship",
-      period: "2016 - 2017",
+      period: "2016 — 2017",
       summary: "Web Development | Technical Support | CMS Handling",
       points: ["Web development",
          "Website support (WordPress).",
