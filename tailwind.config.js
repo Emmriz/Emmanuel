@@ -6,21 +6,21 @@ module.exports = {
     extend: {
       // Colour values live in css/theme.css — edit them there, no rebuild needed.
       colors: {
-        bg: "rgb(var(--color-bg) / <alpha-value>)",
-        surface: "rgb(var(--color-surface) / <alpha-value>)",
-        elevated: "rgb(var(--color-elevated) / <alpha-value>)",
-        border: "rgb(var(--color-border) / <alpha-value>)",
-        foreground: "rgb(var(--color-foreground) / <alpha-value>)",
-        secondary: "rgb(var(--color-secondary) / <alpha-value>)",
-        muted: "rgb(var(--color-muted) / <alpha-value>)",
+        bg: "color-mix(in srgb, var(--color-bg) calc(<alpha-value> * 100%), transparent)",
+        surface: "color-mix(in srgb, var(--color-surface) calc(<alpha-value> * 100%), transparent)",
+        elevated: "color-mix(in srgb, var(--color-elevated) calc(<alpha-value> * 100%), transparent)",
+        border: "color-mix(in srgb, var(--color-border) calc(<alpha-value> * 100%), transparent)",
+        foreground: "color-mix(in srgb, var(--color-foreground) calc(<alpha-value> * 100%), transparent)",
+        secondary: "color-mix(in srgb, var(--color-secondary) calc(<alpha-value> * 100%), transparent)",
+        muted: "color-mix(in srgb, var(--color-muted) calc(<alpha-value> * 100%), transparent)",
         accent: {
-          DEFAULT: "rgb(var(--color-accent) / <alpha-value>)",
-          light: "rgb(var(--color-accent-light) / <alpha-value>)",
-          dark: "rgb(var(--color-accent-dark) / <alpha-value>)",
+          DEFAULT: "color-mix(in srgb, var(--color-accent) calc(<alpha-value> * 100%), transparent)",
+          light: "color-mix(in srgb, var(--color-accent-light) calc(<alpha-value> * 100%), transparent)",
+          dark: "color-mix(in srgb, var(--color-accent-dark) calc(<alpha-value> * 100%), transparent)",
         },
         success: {
-          DEFAULT: "rgb(var(--color-success) / <alpha-value>)",
-          light: "rgb(var(--color-success-light) / <alpha-value>)",
+          DEFAULT: "color-mix(in srgb, var(--color-success) calc(<alpha-value> * 100%), transparent)",
+          light: "color-mix(in srgb, var(--color-success-light) calc(<alpha-value> * 100%), transparent)",
         },
       },
       fontFamily: {

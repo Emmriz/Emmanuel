@@ -1,32 +1,29 @@
 /*
  * SITE COLOURS — edit this file to change the colours of the whole site.
  * No rebuild is needed: save, then refresh the browser.
- *
- * Each colour is written as three numbers: red green blue (0–255), separated by spaces.
- * The hex value in each comment is the same colour, for reference.
- * To convert a hex colour such as #6366f1, use any "hex to RGB" converter
- * (#6366f1 → 99 102 241).
+ * Use any hex colour, e.g. #e11d48. Lighter/faded versions used around the
+ * site (tints behind icons, hover glows) are worked out from these automatically.
  */
 :root {
   /* Buttons, links, highlights, the "Featured" badge, timeline dots */
-  --color-accent: 99 102 241;          /* #6366f1 */
-  --color-accent-light: 129 140 248;   /* #818cf8  hover text on links */
-  --color-accent-dark: 79 70 229;      /* #4f46e5  button hover */
+  --color-accent: #6366f1;
+  --color-accent-light: #818cf8;   /* hover text on links, light rays behind the hero */
+  --color-accent-dark: #4f46e5;    /* button hover */
 
   /* Backgrounds */
-  --color-bg: 9 9 11;                  /* #09090b  page background */
-  --color-surface: 17 17 21;           /* #111115  cards */
-  --color-elevated: 26 26 32;          /* #1a1a20  tags, inputs, inner boxes */
-  --color-border: 39 39 42;            /* #27272a  lines and card borders */
+  --color-bg: #09090b;             /* page background */
+  --color-surface: #111115;        /* cards */
+  --color-elevated: #1a1a20;       /* tags, inputs, inner boxes */
+  --color-border: #27272a;         /* lines and card borders */
 
   /* Text */
-  --color-foreground: 250 250 250;     /* #fafafa  headings and main text */
-  --color-secondary: 161 161 170;      /* #a1a1aa  body text */
-  --color-muted: 82 82 91;             /* #52525b  small, quiet text */
+  --color-foreground: #fafafa;     /* headings and main text */
+  --color-secondary: #a1a1aa;      /* body text */
+  --color-muted: #52525b;          /* small, quiet text */
 
   /* "Available for work" dot and opening hours */
-  --color-success: 34 197 94;          /* #22c55e */
-  --color-success-light: 74 222 128;   /* #4ade80 */
+  --color-success: #22c55e;
+  --color-success-light: #4ade80;
 }
 
-body { background-color: rgb(var(--color-bg)); }
+body { background-color: var(--color-bg); }

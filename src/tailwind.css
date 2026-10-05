@@ -7,8 +7,25 @@
 @tailwind utilities;
 
 @layer base {
+  /* Fallback colours, used only if css/theme.css fails to load. Edit colours in css/theme.css, not here —
+     :where() gives these zero priority, so theme.css always wins. */
+  :where(:root) {
+    --color-accent: #6366f1;
+    --color-accent-light: #818cf8;
+    --color-accent-dark: #4f46e5;
+    --color-bg: #09090b;
+    --color-surface: #111115;
+    --color-elevated: #1a1a20;
+    --color-border: #27272a;
+    --color-foreground: #fafafa;
+    --color-secondary: #a1a1aa;
+    --color-muted: #52525b;
+    --color-success: #22c55e;
+    --color-success-light: #4ade80;
+  }
+
   html { scroll-behavior: smooth; }
-  ::selection { background: rgb(var(--color-accent) / 0.35); }
+  ::selection { background: color-mix(in srgb, var(--color-accent) 35%, transparent); }
   input[type="search"]::-webkit-search-cancel-button { filter: invert(0.6); cursor: pointer; }
 }
 

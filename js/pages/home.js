@@ -253,7 +253,12 @@
 
     const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
     // Rays take the light accent colour from css/theme.css.
-    const rayColor = getComputedStyle(document.documentElement).getPropertyValue("--color-accent-light").trim() || "129 140 248";
+    const rayColor = (() => {
+      const hex = getComputedStyle(document.documentElement).getPropertyValue("--color-accent-light").trim().replace("#", "");
+      const full = hex.length === 3 ? [...hex].map((c) => c + c).join("") : hex;
+      const n = parseInt(full, 16);
+      return /^[0-9a-f]{6}$/i.test(full) ? `${(n >> 16) & 255} ${(n >> 8) & 255} ${n & 255}` : "129 140 248";
+    })();
     const rays = Array.from({ length: 16 }, (_, i) => ({
       angle: (i / 15 - 0.5) * 1.5 + (Math.random() - 0.5) * 0.08,
       width: 0.03 + Math.random() * 0.06,
