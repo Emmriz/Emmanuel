@@ -303,8 +303,69 @@ const App = (function () {
     renderHeader();
     $("#main").innerHTML = html;
     renderFooter();
-    observeReveals();
-    observeCounters();
+    // While the intro is playing, hold the page's own entrance animations until it has finished.
+    introDone.then(() => {
+      observeReveals();
+      observeCounters();
+    });
+  }
+
+  /* ---------- Opening name animation ---------- */
+  // Plays on the first visit of a browser session: the name builds up letter by letter,
+  // an accent line draws underneath, the role fades in, then the overlay fades away.
+  let introDone = Promise.resolve();
+
+  function intro() {
+    const SEEN_KEY = "intro-seen";
+    let seen = false;
+    try { seen = sessionStorage.getItem(SEEN_KEY) === "1"; } catch (e) { /* storage blocked: just play it */ }
+    if (SITE.intro === false || seen || matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    try { sessionStorage.setItem(SEEN_KEY, "1"); } catch (e) { /* ignore */ }
+
+    const name = String(SITE.introName || SITE.firstName).toUpperCase();
+    const STAGGER = 60; // ms between letters
+    const letters = [...name]
+      .map((ch, i) =>
+        ch === " "
+          ? '<span class="inline-block w-[0.3em]"></span>'
+          : `<span class="intro-letter inline-block text-[clamp(3rem,10vw,7.5rem)] font-bold tracking-tight text-foreground leading-none" style="animation-delay:${200 + i * STAGGER}ms">${esc(ch)}</span>`
+      )
+      .join("");
+    const lettersEnd = 200 + name.length * STAGGER + 500;
+
+    document.body.insertAdjacentHTML(
+      "beforeend",
+      `<div id="intro" class="fixed inset-0 z-[9999] flex items-center justify-center bg-bg" role="presentation">
+        <div class="text-center select-none px-6">
+          <div class="flex items-end justify-center gap-1 sm:gap-2 overflow-hidden pb-1" aria-label="${esc(name)}">${letters}</div>
+          <div class="intro-line h-0.5 bg-accent mx-auto mt-3 mb-4 origin-left" style="width:clamp(6rem,20vw,16rem);animation-delay:${lettersEnd - 200}ms"></div>
+          <p class="intro-fade text-secondary tracking-[0.3em] uppercase text-sm font-medium" style="animation-delay:${lettersEnd}ms">${esc(SITE.role)}</p>
+        </div>
+        <button id="intro-skip" class="intro-fade absolute bottom-8 right-8 text-muted text-xs tracking-widest uppercase hover:text-secondary transition-colors" style="animation-delay:600ms">Skip →</button>
+      </div>`
+    );
+
+    const overlay = $("#intro");
+    document.documentElement.classList.add("overflow-hidden");
+
+    introDone = new Promise((resolve) => {
+      let finished = false;
+      const finish = () => {
+        if (finished) return;
+        finished = true;
+        clearTimeout(timer);
+        document.removeEventListener("keydown", onKey);
+        overlay.classList.add("intro-out");
+        document.documentElement.classList.remove("overflow-hidden");
+        resolve();
+        setTimeout(() => overlay.remove(), 600);
+      };
+      const onKey = (e) => e.key === "Escape" && finish();
+      // The intro lasts 5 seconds in total: it starts fading at 4.5s and the 0.5s fade ends at 5s.
+      const timer = setTimeout(finish, 4500);
+      $("#intro-skip").addEventListener("click", finish);
+      document.addEventListener("keydown", onKey);
+    });
   }
 
   return {
@@ -312,6 +373,6 @@ const App = (function () {
     BTN_PRIMARY, BTN_GHOST, CARD,
     eyebrow, resumeButton, socials,
     media, imagesOf, coverOf, projectUrl,
-    observeReveals, delay, timeline, skillsSection, mount,
+    observeReveals, delay, timeline, skillsSection, mount, intro,
   };
 })();

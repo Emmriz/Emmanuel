@@ -38,6 +38,10 @@ const SITE = {
    */
   formEndpoint: "",
 
+  // Opening animation on the home page (plays once per browser session).
+  intro: true,          // set to false to turn it off
+  introName: "",        // text to spell out; leave empty to use firstName
+
   // The three numbers under the hero buttons.
   heroStats: [
     { value: "10+", label: "Projects Shipped" },

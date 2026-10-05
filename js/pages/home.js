@@ -239,6 +239,7 @@
       </div>
     </section>`;
 
+  App.intro();
   App.mount("", hero + impact + (featured.length ? featuredDesktop + featuredMobile : "") + capabilities + experience + App.skillsSection() + testimonials + cta);
 
   /* ---------- Animated light rays behind the hero ---------- */

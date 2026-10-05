@@ -31,9 +31,18 @@
   .reveal-x { transform: translateX(20px); }
   .reveal.is-visible, .reveal-x.is-visible { opacity: 1; transform: none; }
 
+  /* Opening name animation (see intro() in js/app.js) */
+  .intro-letter { opacity: 0; transform: translateY(40px); animation: intro-up 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+  .intro-line { transform: scaleX(0); animation: intro-line 0.7s cubic-bezier(0.65, 0, 0.35, 1) forwards; }
+  .intro-fade { opacity: 0; transform: translateY(20px); animation: intro-up 0.6s ease-out forwards; }
+  .intro-out { opacity: 0; transition: opacity 0.5s ease-in-out; pointer-events: none; }
+
   /* Hero light rays */
   .light-rays canvas { display: block; filter: blur(22px); }
 }
+
+@keyframes intro-up { to { opacity: 1; transform: none; } }
+@keyframes intro-line { to { transform: scaleX(1); } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
