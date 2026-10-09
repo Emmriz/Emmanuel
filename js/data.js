@@ -85,7 +85,9 @@ const EXPERIENCE = {
       period: "2021 — Present",
       summary: "Web Development | Web Hosting & DNS Management | Technical Support.",
       points: [
-        "Continous Developement, and maintaining responsive websites and web applications.",
+        "Website development.",
+        "Developing web applications",
+        "Website maintenance and support for web applications.",
         "Web Hosting (CPanel & Cloud environment)",
         "Database optimization & Management",
         "Maintaining web hosting environment in both a Linux and Windows environment.",
